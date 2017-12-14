@@ -13,7 +13,7 @@ import java.util.LinkedList;
 /**
  * Created by douglas on 11/4/17.
  */
-@Path("resource1")
+@Path("resource")
 public class Facade {
     private static PostDb postDb = new PostDb();
 

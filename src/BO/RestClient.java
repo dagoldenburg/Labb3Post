@@ -11,8 +11,8 @@ import javax.ws.rs.core.MediaType;
 import java.util.LinkedList;
 
 public class RestClient {
-    private static final String userUrl ="http://localhost:8080/user/";
-    private static final String postUrl ="http://localhost:8081/post/";
+    private static final String userUrl ="http://localhost:8080/resource/";
+    private static final String postUrl ="http://localhost:8081/resource/";
     private  static Client client  = ClientBuilder.newClient();
     private static Gson gson =  new Gson();
 
