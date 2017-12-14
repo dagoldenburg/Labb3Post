@@ -64,8 +64,9 @@ public class Facade {
         Gson gson = new Gson();
         LinkedList<PostViewModel> posts = new LinkedList<>();
         for(UserViewModel u:RestClient.getFriendList(Long.parseLong(myId))){
-            for(PostViewModel p:RestClient.getPostsByOwnerId(u.getId())){
-                posts.add(p);
+            for(Post p:postDb.getPostsByOwnerId(u.getId())){
+                posts.add(new PostViewModel(p.getId(),p.getTitle(), p.getContent(), p.getPublishDate(),
+                        RestClient.getUserById(Long.parseLong(myId))));
             }
         }
         posts.sort(PostViewModel::compareTo);

@@ -8,7 +8,7 @@ import java.util.Date;
  */
 @Entity
 @NamedQueries({
-        @NamedQuery(name="Post.FindPostBycreatorId",query = "Select p From Post  p where  p.creator.id=:id")
+        @NamedQuery(name="Post.FindPostBycreatorId",query = "Select p From Post  p where  p.creatorId=:id")
 })
 @Table(name = "post", schema = "SocialDb", catalog = "")
 public class Post {
@@ -17,7 +17,7 @@ public class Post {
     private String content;
     private Date publishDate;
     private String title;
-    private User creator;
+    private long creatorId;
 
     @Id
     @Column(name = "id")
@@ -55,9 +55,9 @@ public class Post {
         this.title = title;
     }
 
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "creator_id")
-    public User getCreator() { return creator;}
+    @Basic
+    @Column(name = "creator_id")
+    public long getCreatorId() { return creatorId;}
 
-    public void setCreator(User creator) { this.creator = creator;}
+    public void setCreatorId(long creator) { this.creatorId = creator;}
 }

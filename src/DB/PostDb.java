@@ -2,7 +2,6 @@ package DB;
 
 
 import BO.Post;
-import BO.User;
 
 import javax.persistence.EntityManager;
 import javax.persistence.NoResultException;
@@ -24,8 +23,7 @@ public class PostDb {
             post.setContent(Content);
             post.setTitle(title);
             post.setPublishDate(date);
-            User creator = (User) entityManager.find(User.class,userId);
-            post.setCreator(creator);
+            post.setCreatorId(userId);
             entityManager.persist(post);
             entityManager.getTransaction().commit();
         }catch (PersistenceException e){
